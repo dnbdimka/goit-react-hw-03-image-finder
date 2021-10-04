@@ -2,24 +2,20 @@ import React, { Component } from "react";
 
 class ImageGalleryItem extends Component {
   onImgClick = (e) => {
-    this.props.toggleModal(e.target.getAttribute("image"));
+    this.props.toggleModal(this.props.image.bigImg);
   };
 
   render() {
+    const { smallImg } = this.props.image;
     return (
-      <>
-        {this.props.galleryList.map((image) => (
-          <li key={image.id} className="ImageGalleryItem">
-            <img
-              src={image.smallImg}
-              alt=""
-              className="ImageGalleryItem-image"
-              onClick={this.onImgClick}
-              image={image.bigImg}
-            />
-          </li>
-        ))}
-      </>
+      <li className="ImageGalleryItem">
+        <img
+          src={smallImg}
+          alt=""
+          className="ImageGalleryItem-image"
+          onClick={this.onImgClick}
+        />
+      </li>
     );
   }
 }

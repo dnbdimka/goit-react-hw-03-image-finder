@@ -65,10 +65,13 @@ class ImageGallery extends Component {
     return (
       <>
         <SearchGalleryList>
-          <ImageGalleryItem
-            galleryList={this.state.gallery}
-            toggleModal={this.props.toggleModal}
-          />
+          {this.state.gallery.map((item) => (
+            <ImageGalleryItem
+              key={item.id}
+              image={item}
+              toggleModal={this.props.toggleModal}
+            />
+          ))}
         </SearchGalleryList>
         {this.state.isLoading && (
           <LoaderContainer>
